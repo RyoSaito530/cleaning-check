@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>清掃チェックシステム</title>
+</head>
+<body>
+	<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+	<script type="text/javascript" th:inline="javascript">
+		/*<![CDATA[*/
+		$(document).ready(function() {
+			setTimeout(function() {
+				location.href = "./top";
+			}, 5000);
+		});
+		/*]]>*/
+	</script>
+	<div align="center">
+		<h1>送信完了</h1>
+		<p>5秒後にトップ画面に戻ります
+		<form th:action="@{/top}" method="post"></form>
+	</div>
+</body>
+</html>

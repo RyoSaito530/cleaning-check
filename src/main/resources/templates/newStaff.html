@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" th:href="@{/style.css}" />
+<title>スタッフ新規登録</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+	crossorigin="anonymous">
+</head>
+<body>
+	<div align="center">
+		<br>
+		<h1>スタッフ新規登録</h1>
+		<form th:action="@{/home}" th:object="${inputForm}" method="post">
+			<br>
+			<div th:if="${#fields.hasErrors('all')}"></div>
+			<p th:errors="*{all}" class="error-message">error！</p>
+			<table>
+				<tr>
+					<td align="right">スタッフID：</td>
+					<td><input type="number" th:field="*{staff_id}" /></td>
+				</tr>
+				<tr>
+					<td align="right">姓：</td>
+					<td><input type="text" th:field="*{last_name}" /></td>
+					<td align="right">名：</td>
+					<td><input type="text" th:field="*{first_name}" /></td>
+				</tr>
+			</table>
+			<br> <input type="submit" name="insert" value="登録"
+				class="btn btn-primary" /> <br> <br> <input type="submit"
+				value="ホームへ戻る" />
+			<script th:inline="javascript">
+				/*<![CDATA[*/
+				var create = /*[[*{create}]]*/'create';
+				if (create == "ok") {
+					alert("スタッフの登録が完了しました");
+				}
+				/*]]>*/
+			</script>
+		</form>
+	</div>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.persistence.InfoMapper">
+	<insert id="insert">
+		INSERT INTO staff(staff_id,
+		staff_name)
+		VALUES
+		(#{staff_id}, #{staff_name})
+	</insert>
+	<insert id="insertCleaning">
+		INSERT INTO cleaning_check(staff_name,
+		towel_men,
+		towel_women, alcohol_men, alcohol_women, locker_men, locker_women,
+		powder_men, powder_women, toilet_men, toilet_women, inp_date,
+		upd_date)
+		VALUES
+		(#{staff_name}, #{towel_men}, #{towel_women},
+		#{alcohol_men}, #{alcohol_women}, #{locker_men}, #{locker_women},
+		#{powder_men},
+		#{powder_women}, #{toilet_men}, #{toilet_women}, NOW(),
+		NOW())
+	</insert>
+	<delete id="delete">
+		DELETE FROM cleaning_check WHERE cleaning_id =
+		#{cleaning_id}
+	</delete>
+	<select id="selectAll"
+		resultType="com.example.domain.StaffInfoResult">
+		SELECT staff_id, staff_name FROM staff
+	</select>
+	<select id="selectAllCleaning"
+		resultType="com.example.domain.CleaningInfoResult">
+		SELECT cleaning_id, staff_name, towel_men, towel_women,
+		alcohol_men, alcohol_women, locker_men, locker_women, powder_men,
+		powder_women, toilet_men, toilet_women, inp_date, upd_date FROM
+		cleaning_check
+	</select>
+</mapper>

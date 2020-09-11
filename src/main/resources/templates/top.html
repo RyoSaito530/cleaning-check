@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" th:href="@{/style.css}" />
+<title>清掃チェックシステム</title>
+</head>
+<body>
+	<div align="center">
+		<form th:action="@{/send}" th:object="${inputForm}" method="post">
+			<h1>清掃チェックシステム</h1>
+			<div th:if="${#fields.hasErrors('all')}"></div>
+			<p th:errors="*{all}" class="error-message">error！</p>
+			担当スタッフ：<select th:field="*{staff_name}">
+				<option value=""></option>
+				<option th:each="list : ${searchList}" th:value="${list.staffName}"
+					th:text="${list.staffName}"></option>
+			</select> <br> <br>
+			<table>
+				<tr>
+					<td align="right">タオル：</td>
+					<td><input type="checkbox" name="towel_men" value="○"
+						id="Group2_0" class="checkbox02" /><label for="Group2_0"
+						class="check_label">男</label></td>
+					<td><input type="checkbox" name="towel_women" value="○"
+						id="Group2_1" class="checkbox03" /><label for="Group2_1"
+						class="check_label2">女</label></td>
+				</tr>
+				<tr>
+					<td align="right">アルコール：</td>
+					<td><input type="checkbox" name="alcohol_men" value="○"
+						id="Group2_2" class="checkbox02" /><label for="Group2_2"
+						class="check_label">男</label></td>
+					<td><input type="checkbox" name="alcohol_women" value="○"
+						id="Group2_3" class="checkbox03" /><label for="Group2_3"
+						class="check_label2">女</label></td>
+				</tr>
+				<tr>
+					<td align="right">ロッカー：</td>
+					<td><input type="checkbox" name="locker_men" value="○"
+						id="Group2_4" class="checkbox02" /><label for="Group2_4"
+						class="check_label">男</label></td>
+					<td><input type="checkbox" name="locker_women" value="○"
+						id="Group2_5" class="checkbox03" /><label for="Group2_5"
+						class="check_label2">女</label></td>
+				</tr>
+				<tr>
+					<td align="right">パウダー：</td>
+					<td><input type="checkbox" name="powder_men" value="○"
+						id="Group2_6" class="checkbox02" /><label for="Group2_6"
+						class="check_label">男</label></td>
+					<td><input type="checkbox" name="powder_women" value="○"
+						id="Group2_7" class="checkbox03" /><label for="Group2_7"
+						class="check_label2">女</label></td>
+				</tr>
+				<tr>
+					<td align="right">トイレ：</td>
+					<td><input type="checkbox" name="toilet_men" value="○"
+						id="Group2_8" class="checkbox02" /><label for="Group2_8"
+						class="check_label">男</label></td>
+					<td><input type="checkbox" name="toilet_women" value="○"
+						id="Group2_9" class="checkbox03" /><label for="Group2_9"
+						class="check_label2">女</label></td>
+				</tr>
+			</table>
+			<br> <input type="submit" value="上記のチェック項目を送信する" />
+		</form>
+	</div>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<form th:action="@{/home}" method="post">
+		<div align="right">
+			<input type="submit" value="管理画面へ" />
+		</div>
+	</form>
+</body>
+</html>
