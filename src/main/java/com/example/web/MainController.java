@@ -160,7 +160,7 @@ public class MainController {
 
 		SimpleMailMessage msg = new SimpleMailMessage();
 
-		msg.setTo("n.ise@zexis-net.jp");
+		msg.setTo("メールアドレス");
 		msg.setSubject(fdate1 + "清掃チェック報告");
 		msg.setText(fdate2 + "時\n---------------------------\n" + body + "\n---------------------------");
 
